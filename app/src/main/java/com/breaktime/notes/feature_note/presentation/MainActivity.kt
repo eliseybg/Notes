@@ -1,4 +1,4 @@
-package com.breaktime.notes
+package com.breaktime.notes.feature_note.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
