@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
@@ -42,6 +43,11 @@ fun NoteItem(
             }
 
             clipPath(clipPath) {
+                drawRoundRect(
+                    color = Color(note.color),
+                    size = size,
+                    cornerRadius = CornerRadius(cornerRadius.toPx())
+                )
                 drawRoundRect(
                     color = Color(
                         ColorUtils.blendARGB(note.color, android.graphics.Color.BLACK, 0.2f)
@@ -85,4 +91,17 @@ fun NoteItem(
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun NoteItemPreview() {
+    NoteItem(
+        Note(
+            title = "Title",
+            content = "content",
+            timestamp = System.currentTimeMillis(),
+            color = android.graphics.Color.BLUE
+        ),
+        onDeleteClick = {})
 }
